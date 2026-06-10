@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Dyovity | Portfolio - Web & App Development Agency</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f1f5f9;
+            line-height: 1.5;
+        }
+        /* Header Navigation */
+        .main-header {
+            background: #0f172a;
+            padding: 16px 32px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .header-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: -0.5px;
+        }
+        .logo span {
+            color: #60a5fa;
+        }
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover {
+            color: #60a5fa;
+        }
+        .nav-btn {
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            padding: 8px 20px;
+            border-radius: 40px;
+            color: #fff !important;
+            font-weight: 600;
+        }
+        .nav-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+        /* Footer */
+        .main-footer {
+            background: #0f172a;
+            padding: 48px 32px 32px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+        }
+        .footer-col h4 {
+            color: #fff;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        .footer-col p, .footer-col a {
+            color: rgba(255,255,255,0.6);
+            font-size: 14px;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 12px;
+            transition: color 0.2s;
+        }
+        .footer-col a:hover {
+            color: #60a5fa;
+        }
+        .social-icons {
+            display: flex;
+            gap: 16px;
+            margin-top: 16px;
+        }
+        .social-icons a {
+            width: 36px;
+            height: 36px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+        }
+        .social-icons a:hover {
+            background: #3b82f6;
+            transform: translateY(-3px);
+        }
+        .copyright {
+            text-align: center;
+            margin-top: 48px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            color: rgba(255,255,255,0.5);
+            font-size: 13px;
+        }
+        /* Portfolio Grid */
+        #pfGrid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .project-card {
+            border-radius: 14px;
+            overflow: hidden;
+            background: #fff;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.09);
+            transition: transform .3s, box-shadow .3s;
+        }
+        .project-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 30px rgba(0,0,0,0.12);
+        }
+        .card-img-top {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+            transition: transform .4s;
+        }
+        .project-card:hover .card-img-top {
+            transform: scale(1.03);
+        }
+        @media (max-width: 1023px) {
+            #pfGrid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 639px) {
+            #pfGrid { grid-template-columns: 1fr; }
+            .header-container { flex-direction: column; text-align: center; }
+            .nav-links { justify-content: center; }
+        }
+        /* contact form focus */
+        input:focus, textarea:focus {
+            border-color: #3b82f6 !important;
+            box-shadow: 0 0 0 3px rgba(59,130,246,0.2);
+            outline: none;
+        }
+        button {
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(59,130,246,0.3);
+        }
+    </style>
+</head>
+<body>
+
+<!-- ==================== HEADER ==================== -->
+<header class="main-header">
+    <div class="header-container">
+        <div class="logo">Dyovity<span>.</span></div>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Portfolio</a>
+            <a href="#">Services</a>
+            <a href="#">About</a>
+            <a href="#contact" class="nav-btn">Contact</a>
+        </div>
+    </div>
+</header>
+
+<!-- ==================== PORTFOLIO HERO ==================== -->
+<section style="position:relative;overflow:hidden;padding-top:4rem;padding-bottom:3rem;min-height:340px;display:flex;align-items:center;background:#0f172a;">
+    <div style="position:absolute;inset:0;z-index:0;"><canvas id="networkCanvas" style="width:100%;height:100%;display:block;"></canvas></div>
+    <div style="position:relative;z-index:10;width:100%;text-align:center;padding:0 16px;">
+        <p style="font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#60a5fa;margin:0 0 10px;">Our Work</p>
+        <h1 style="font-size:clamp(1.8rem,4vw,3rem);font-weight:800;color:#fff;margin:0 0 14px;line-height:1.2;">Projects That <span style="color:#60a5fa;">Deliver Results</span></h1>
+        <p style="font-size:15px;color:rgba(255,255,255,0.7);margin:0;">Web apps · Mobile apps · E-commerce · Automation — built with modern tech stacks.</p>
+    </div>
+</section>
+
+<!-- ==================== PORTFOLIO GRID (ALL 20 PROJECTS WITH IMAGES) ==================== -->
+<section style="background:#f1f5f9;padding:50px 0 70px;">
+<div style="max-width:1200px;margin:0 auto;padding:0 20px;">
+<div id="pfGrid">
+
+    <!-- 1. CRM -->
+    <div class="project-card">
+        <img class="card-img-top" src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80" alt="CRM Dashboard">
+        <div style="padding:16px 18px 18px;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:7px;">
+                <p style="font-size:14px;font-weight:700;color:#1e293b;margin:0;">Custom CRM Solution</p>
+                <span style="background:#dbeafe;color:#1d4ed8;font-size:10px;font-weight:700;padding:3px 10px;border-radius:999px;">Web Dev</span>
+            </div>
+            <p style="font-size:12.5px;color:#64748b;margin:0 0 11px;">Feature-rich CRM to streamline operations and improve customer management.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:5px;">
+                <span style="background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:999px;">Laravel</span>
+                <span style="background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:999px;">React.js</span>
+                <span style="background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:999px;">MySQL</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. E-Learning App -->
+    <div class="project-card">
+        <img class="card-img-top" src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80" alt="E-Learning">
+        <div style="padding:16px 18px 18px;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:7px;">
+                <p style="font-size:14px;font-weight:700;color:#1e293b;margin:0;">E-Learning Mobile App</p>
+                <span style="background:#ede9fe;color:#6d28d9;font-size:10px;font-weight:700;padding:3px 10px;border-radius:999px;">App Dev</span>
+            </div>
+            <p style="font-size:12.5px;color:#64748b;margin:0 0 11px;">All learning tools in one place — interactive and accessible on any device.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:5px;">
+                <span style="background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:999px;">React Native</span>
+                <span style="background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:999px;">Node.js</span>
+                <span style="background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:999px;">MongoDB</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. Healthcare -->
+    <div class="project-card">
+        <img class="card-img-top" src="https://images.unsplash.com/photo-1551190822-a9333d879b1f?auto=format&fit=crop&w=800&q=80" alt="Healthcare">
+        <div style="padding:16px 18px 18px;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:7px;">
+                <p style="font-size:14px;font-weight:700;color:#1e293b;margin:0;">Healthcare & Patient Management</p>
+                <span style="background:#ccfbf1;color:#0f766e;font-size:10px;font-weight:700;padding:3px 10px;border-radius:999px;">App Dev</span>
+            </div>
+            <p style="font-size:12.5px;color:#64748b;margin:0 0 11px;">Complete app for doctor booking, appointments and medical services.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:5px;">
+                <span style="background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:999px;">Next.js</span>
+                <span style="background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:999px;">Node.js</span>
+                <span style="background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:999px;">PostgreSQL</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. Food Delivery -->
+    <div class="project-card">
+        <img class="card-img-top" src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=800&q=80" alt="Food Delivery">
+        <div style="padding:16px 18px 18px;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:7px;">
+                <p style="font-size:14px;font-weight:700;color:#1e293b;margin:0;">Food Delivery App</p>
+                <span style="background:#ffedd5;color:#c2410c;font-size:10px;font-weight:700;padding:3px 10px;border-radius:999px;">App Dev</span>
+            </div>
+            <p style="font-size:12.5px;color:#64748b;margin:0 0 11px;">Real-time order tracking with restaurant listings and payment integration.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:5px;">
+                <span style="background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:999px;">React Native</span>
+                <span style="background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:999px;">Node.js</span>
+                <span style="background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:999px;">MongoDB</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. Multi-Vendor E-Commerce -->
+    <div class="project-card">
+        <img class="card-img-top" src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800&q=80" alt="E-Commerce">
+        <div style="padding:16px 18px 18px;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:7px;">
+                <p style="font-size:14px;font-weight:700;color:#1e293b;margin:0;">Multi-Vendor E-Commerce</p>
+                <span style="background:#fce7f3;color:#be185d;font-size:10px;font-weight:700;padding:3px 10px;border-radius:999px;">E-commerce</span>
+            </div>
+            <p style="font-size:12.5px;color:#64748b;margin:0 0 11px;">Marketplace with inventory control, Razorpay/Stripe payments and analytics.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:5px;">
+                <span style="background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:999px;">Next.js</span>
+                <span style="background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:999px;">Laravel</span>
+                <span style="background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:999px;">MySQL</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. HRM -->
+    <div class="project-card">
+        <img class="card-img-top" src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=800&q=80" alt="HRM System">
+        <div style="padding:16px 18px 18px;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:7px;">
+                <p style="font-size:14px;font-weight:700;color:#1e293b;margin:0;">HR Management System (HRM)</p>
+                <span style="background:#e0e7ff;color:#4338ca;font-size:10px;font-weight:700;padding:3px 10px;border-radius:999px;">Web Dev</span>
+            </div>
+            <p style="font-size:12.5px;color:#64748b;margin:0 0 11px;">Full HR suite: payroll, attendance, leave management and performance tracking.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:5px;">
+                <span style="background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:999px;">Laravel</span>
+                <span style="background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:999px;">React.js</span>
+                <span style="background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:999px;">PostgreSQL</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 7. Fintech Dashboard -->
+    <div class="project-card">
+        <img class="card-img-top" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="Fintech">
+        <div style="padding:16px 18px 18px;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:7px;">
+                <p style="font-size:14px;font-weight:700;color:#1e293b;margin:0;">Fintech Analytics Dashboard</p>
+                <span style="background:#cffafe;color:#0e7490;font-size:10px;font-weight:700;padding:3px 10px;border-radius:999px;">UI/UX</span>
+            </div>
+            <p style="font-size:12.5px;color:#64748b;margin:0 0 11px;">Modern fintech dashboard with live charts, dark mode and portfolio tracking.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:5px;">
+                <span style="background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:999px;">React.js</span>
+                <span style="background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:999px;">Node.js</span>
+                <span style="background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:999px;">MongoDB</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 8. Real Estate -->
+    <div class="project-card">
+        <img class="card-img-top" src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=80" alt="Real Estate">
+        <div style="padding:16px 18px 18px;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:7px;">
+                <p style="font-size:14px;font-weight:700;color:#1e293b;margin:0;">Real Estate Web Platform</p>
+                <span style="background:#dcfce7;color:#15803d;font-size:10px;font-weight:700;padding:3px 10px;border-radius:999px;">Web Dev</span>
+            </div>
+            <p style="font-size:12.5px;color:#64748b;margin:0 0 11px;">Property listings with map search, virtual tours and smart lead generation.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:5px;">
+                <span style="background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:999px;">Next.js</span>
+                <span style="background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:999px;">Laravel</span>
+                <span style="background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:999px;">MySQL</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 9. Fashion E-Commerce -->
+    <div class="project-card">
+        <img class="card-img-top" src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=800&q=80" alt="Fashion Store">
+        <div style="padding:16px 18px 18px;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:7px;">
+                <p style="font-size:14px;font-weight:700;color:#1e293b;margin:0;">Fashion E-Commerce Store</p>
+                <span style="background:#ffe4e6;color:#9f1239;font-size:10px;font-weight:700;padding:3px 10px;border-radius:999px;">E-commerce</span>
+            </div>
+            <p style="font-size:12.5px;color:#64748b;margin:0 0 11px;">Premium fashion store with wishlist, loyalty points and payment integration.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:5px;">
+                <span style="background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:999px;">React.js</span>
+                <span style="background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:999px;">Node.js</span>
+                <span style="background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:999px;">MongoDB</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 10. Digital Marketing Agency -->
+    <div class="project-card">
+        <img class="card-img-top" src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80" alt="Marketing Agency">
+        <div style="padding:16px 18px 18px;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:7px;">
+                <p style="font-size:14px;font-weight:700;color:#1e293b;margin:0;">Digital Marketing Agency Site</p>
+                <span style="background:#ede9fe;color:#6d28d9;font-size:10px;font-weight:700;padding:3px 10px;border-radius:999px;">Web Dev</span>
+            </div>
+            <p style="font-size:12.5px;color:#64748b;margin:0 0 11px;">Agency site with landing pages, lead generation forms and Google Analytics.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:5px;">
+                <span style="background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:999px;">Next.js</span>
+                <span style="background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:999px;">Node.js</span>
+                <span style="background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:999px;">MySQL</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 11. Restaurant Table Booking -->
+    <div class="project-card">
+        <img class="card-img-top" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80" alt="Restaurant Booking">
+        <div style="padding:16px 18px 18px;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:7px;">
+                <p style="font-size:14px;font-weight:700;color:#1e293b;margin:0;">Restaurant Table Booking System</p>
+                <span style="background:#fef3c7;color:#92400e;font-size:10px;font-weight:700;padding:3px 10px;border-radius:999px;">Web Dev</span>
+            </div>
+            <p style="font-size:12.5px;color:#64748b;margin:0 0 11px;">Smart reservation system with floor map, SMS alerts and no-show management.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:5px;">
+                <span style="background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:999px;">Laravel</span>
+                <span style="background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:999px;">Vue.js</span>
+                <span style="background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:999px;">MySQL</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 12. Cloud Kitchen -->
+    <div class="project-card">
+        <img class="card-img-top" src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=800&q=80" alt="Cloud Kitchen">
+        <div style="padding:16px 18px 18px;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:7px;">
+                <p style="font-size:14px;font-weight:700;color:#1e293b;margin:0;">Cloud Kitchen Management Platform</p>
+                <span style="background:#d1fae5;color:#047857;font-size:10px;font-weight:700;padding:3px 10px;border-radius:999px;">Web Dev</span>
+            </div>
+            <p style="font-size:12.5px;color:#64748b;margin:0 0 11px;">Unified platform for multi-brand cloud kitchens with order aggregation and KDS.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:5px;">
+                <span style="background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:999px;">Next.js</span>
+                <span style="background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:999px;">Node.js</span>
+                <span style="background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:999px;">PostgreSQL</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 13. Recipe & Meal Planner -->
+    <div class="project-card">
+        <img class="card-img-top" src="https://images.unsplash.com/photo-1466637574441-749b8f19452f?auto=format&fit=crop&w=800&q=80" alt="Recipe App">
+        <div style="padding:16px 18px 18px;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:7px;">
+                <p style="font-size:14px;font-weight:700;color:#1e293b;margin:0;">Recipe & Meal Planner App</p>
+                <span style="background:#ffedd5;color:#c2410c;font-size:10px;font-weight:700;padding:3px 10px;border-radius:999px;">App Dev</span>
+            </div>
+            <p style="font-size:12.5px;color:#64748b;margin:0 0 11px;">Personalised meal plans with calorie tracking and auto grocery list generation.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:5px;">
+                <span style="background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:999px;">React Native</span>
+                <span style="background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:999px;">Node.js</span>
+                <span style="background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:999px;">MongoDB</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 14. Grocery E-Commerce -->
+    <div class="project-card">
+        <img class="card-img-top" src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=800&q=80" alt="Grocery">
+        <div style="padding:16px 18px 18px;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:7px;">
+                <p style="font-size:14px;font-weight:700;color:#1e293b;margin:0;">Online Grocery & Supermarket Store</p>
+                <span style="background:#dcfce7;color:#15803d;font-size:10px;font-weight:700;padding:3px 10px;border-radius:999px;">E-commerce</span>
+            </div>
+            <p style="font-size:12.5px;color:#64748b;margin:0 0 11px;">Fast grocery delivery with subscription boxes, cashback and slot-based checkout.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:5px;">
+                <span style="background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:999px;">Next.js</span>
+                <span style="background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:999px;">Laravel</span>
+                <span style="background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:999px;">MySQL</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 15. Catering & Event Food -->
+    <div class="project-card">
+        <img class="card-img-top" src="https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=800&q=80" alt="Catering">
+        <div style="padding:16px 18px 18px;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:7px;">
+                <p style="font-size:14px;font-weight:700;color:#1e293b;margin:0;">Catering & Event Food Platform</p>
+                <span style="background:#ede9fe;color:#6d28d9;font-size:10px;font-weight:700;padding:3px 10px;border-radius:999px;">Web Dev</span>
+            </div>
+            <p style="font-size:12.5px;color:#64748b;margin:0 0 11px;">End-to-end catering management with custom menus, scheduling and invoicing.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:5px;">
+                <span style="background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:999px;">Laravel</span>
+                <span style="background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:999px;">React.js</span>
+                <span style="background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:999px;">MySQL</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 16. Food Blog -->
+    <div class="project-card">
+        <img class="card-img-top" src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80" alt="Food Blog">
+        <div style="padding:16px 18px 18px;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:7px;">
+                <p style="font-size:14px;font-weight:700;color:#1e293b;margin:0;">Food Blog & Content Platform</p>
+                <span style="background:#fef3c7;color:#b45309;font-size:10px;font-weight:700;padding:3px 10px;border-radius:999px;">UI/UX</span>
+            </div>
+            <p style="font-size:12.5px;color:#64748b;margin:0 0 11px;">Visually rich food content platform with video recipes and community engagement.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:5px;">
+                <span style="background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:999px;">Next.js</span>
+                <span style="background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:999px;">Sanity CMS</span>
+                <span style="background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:999px;">PostgreSQL</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 17. Restaurant POS -->
+    <div class="project-card">
+        <img class="card-img-top" src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=800&q=80" alt="POS">
+        <div style="padding:16px 18px 18px;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:7px;">
+                <p style="font-size:14px;font-weight:700;color:#1e293b;margin:0;">Restaurant POS & Billing System</p>
+                <span style="background:#dbeafe;color:#1e40af;font-size:10px;font-weight:700;padding:3px 10px;border-radius:999px;">Web Dev</span>
+            </div>
+            <p style="font-size:12.5px;color:#64748b;margin:0 0 11px;">Full-featured POS with KOT, table management, GST billing and daily reports.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:5px;">
+                <span style="background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:999px;">React.js</span>
+                <span style="background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:999px;">Laravel</span>
+                <span style="background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:999px;">MySQL</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 18. Bakery E-Commerce -->
+    <div class="project-card">
+        <img class="card-img-top" src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80" alt="Bakery">
+        <div style="padding:16px 18px 18px;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:7px;">
+                <p style="font-size:14px;font-weight:700;color:#1e293b;margin:0;">Artisan Bakery Online Store</p>
+                <span style="background:#ffedd5;color:#c2410c;font-size:10px;font-weight:700;padding:3px 10px;border-radius:999px;">E-commerce</span>
+            </div>
+            <p style="font-size:12.5px;color:#64748b;margin:0 0 11px;">Custom cake & bakery orders with scheduled delivery slots and gifting.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:5px;">
+                <span style="background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:999px;">React.js</span>
+                <span style="background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:999px;">Node.js</span>
+                <span style="background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:999px;">MongoDB</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 19. Nutrition App -->
+    <div class="project-card">
+        <img class="card-img-top" src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=800&q=80" alt="Nutrition">
+        <div style="padding:16px 18px 18px;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:7px;">
+                <p style="font-size:14px;font-weight:700;color:#1e293b;margin:0;">Nutrition & Diet Tracking App</p>
+                <span style="background:#d1fae5;color:#047857;font-size:10px;font-weight:700;padding:3px 10px;border-radius:999px;">App Dev</span>
+            </div>
+            <p style="font-size:12.5px;color:#64748b;margin:0 0 11px;">Barcode scanner for food logging, macro tracking and dietitian consultation chat.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:5px;">
+                <span style="background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:999px;">React Native</span>
+                <span style="background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:999px;">Node.js</span>
+                <span style="background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:999px;">PostgreSQL</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 20. Hotel & Spa -->
+    <div class="project-card">
+        <img class="card-img-top" src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=800&q=80" alt="Hotel Spa">
+        <div style="padding:16px 18px 18px;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:7px;">
+                <p style="font-size:14px;font-weight:700;color:#1e293b;margin:0;">Hotel & Spa Booking Platform</p>
+                <span style="background:#e0e7ff;color:#4338ca;font-size:10px;font-weight:700;padding:3px 10px;border-radius:999px;">Web Dev</span>
+            </div>
+            <p style="font-size:12.5px;color:#64748b;margin:0 0 11px;">Hotel booking with dynamic pricing, spa packages and channel manager integration.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:5px;">
+                <span style="background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:999px;">Next.js</span>
+                <span style="background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:999px;">Laravel</span>
+                <span style="background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:999px;">MySQL</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Tech Stack Section -->
+<div style="margin-top:56px;border-radius:18px;background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 60%,#1e1b4b 100%);padding:44px 32px;text-align:center;">
+    <p style="color:#93c5fd;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin:0 0 8px;">Built With</p>
+    <h3 style="color:#fff;font-size:20px;font-weight:800;margin:0 0 24px;">Technologies We Work With</h3>
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px;">
+        <span style="background:rgba(255,255,255,0.09);border:1px solid rgba(255,255,255,0.18);color:#e2e8f0;padding:8px 18px;border-radius:999px;">🔴 Laravel</span>
+        <span style="background:rgba(255,255,255,0.09);border:1px solid rgba(255,255,255,0.18);color:#e2e8f0;padding:8px 18px;border-radius:999px;">🟢 Node.js</span>
+        <span style="background:rgba(255,255,255,0.09);border:1px solid rgba(255,255,255,0.18);color:#e2e8f0;padding:8px 18px;border-radius:999px;">🔵 React.js</span>
+        <span style="background:rgba(255,255,255,0.09);border:1px solid rgba(255,255,255,0.18);color:#e2e8f0;padding:8px 18px;border-radius:999px;">⬛ Next.js</span>
+        <span style="background:rgba(255,255,255,0.09);border:1px solid rgba(255,255,255,0.18);color:#e2e8f0;padding:8px 18px;border-radius:999px;">🐬 MySQL</span>
+        <span style="background:rgba(255,255,255,0.09);border:1px solid rgba(255,255,255,0.18);color:#e2e8f0;padding:8px 18px;border-radius:999px;">🍃 MongoDB</span>
+        <span style="background:rgba(255,255,255,0.09);border:1px solid rgba(255,255,255,0.18);color:#e2e8f0;padding:8px 18px;border-radius:999px;">🐘 PostgreSQL</span>
+        <span style="background:rgba(255,255,255,0.09);border:1px solid rgba(255,255,255,0.18);color:#e2e8f0;padding:8px 18px;border-radius:999px;">🦋 React Native</span>
+        <span style="background:rgba(255,255,255,0.09);border:1px solid rgba(255,255,255,0.18);color:#e2e8f0;padding:8px 18px;border-radius:999px;">🐳 Docker</span>
+    </div>
+</div>
+</div>
+</section>
+
+<!-- ==================== CONTACT SECTION ==================== -->
+<section id="contact" style="padding:80px 0;background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 60%,#312e81 100%);">
+    <div style="max-width:1200px;margin:0 auto;padding:0 20px;">
+        <div style="text-align:center;margin-bottom:48px;">
+            <h2 style="color:#fff;font-size:2.2rem;font-weight:800;margin:0 0 12px;">Let's Work Together</h2>
+            <p style="color:rgba(255,255,255,0.7);font-size:15px;max-width:520px;margin:0 auto;">Ready to start your next project? Fill out the form below and we'll get back to you within 24 hours.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;">
+            <form style="background:#fff;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:20px;">
+                <div><label style="display:block;font-weight:700;font-size:14px;color:#1e293b;margin-bottom:7px;">Name</label>
+                <input type="text" placeholder="Your Name" style="width:100%;padding:11px 16px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:14px;box-sizing:border-box;"></div>
+                <div><label style="display:block;font-weight:700;font-size:14px;color:#1e293b;margin-bottom:7px;">Email</label>
+                <input type="email" placeholder="you@example.com" style="width:100%;padding:11px 16px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:14px;box-sizing:border-box;"></div>
+                <div><label style="display:block;font-weight:700;font-size:14px;color:#1e293b;margin-bottom:7px;">Message</label>
+                <textarea rows="5" placeholder="Your message here..." style="width:100%;padding:11px 16px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:14px;resize:vertical;box-sizing:border-box;"></textarea></div>
+                <button type="submit" style="background:linear-gradient(90deg,#3b82f6,#8b5cf6);color:#fff;padding:13px;border:none;border-radius:10px;font-size:15px;font-weight:700;">Send Message</button>
+            </form>
+            <div style="display:flex;flex-direction:column;justify-content:center;gap:28px;">
+                <div style="display:flex;align-items:center;gap:16px;">
+                    <div style="width:48px;height:48px;background:linear-gradient(135deg,#3b82f6,#8b5cf6);border-radius:50%;display:flex;align-items:center;justify-content:center;"><i class="fas fa-map-marker-alt" style="color:#fff;font-size:18px;"></i></div>
+                    <span style="color:#fff;font-size:15px;">Noida Sector 22, Uttar Pradesh, India</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:16px;">
+                    <div style="width:48px;height:48px;background:linear-gradient(135deg,#3b82f6,#8b5cf6);border-radius:50%;display:flex;align-items:center;justify-content:center;"><i class="fas fa-phone-alt" style="color:#fff;font-size:18px;"></i></div>
+                    <span style="color:#fff;font-size:15px;">+91 (881) 032-0833</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:16px;">
+                    <div style="width:48px;height:48px;background:linear-gradient(135deg,#3b82f6,#8b5cf6);border-radius:50%;display:flex;align-items:center;justify-content:center;"><i class="fas fa-envelope" style="color:#fff;font-size:18px;"></i></div>
+                    <span style="color:#fff;font-size:15px;">info@dyovity.com</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="main-footer">
+    <div class="footer-container">
+        <div class="footer-col">
+            <h4>Dyovity</h4>
+            <p>We craft high-performance web & mobile solutions that drive business growth. Modern tech, pixel-perfect design.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="footer-col">
+            <h4>Quick Links</h4>
+            <a href="#">Home</a>
+            <a href="#">Portfolio</a>
+            <a href="#">Services</a>
+            <a href="#">About Us</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="footer-col">
+            <h4>Services</h4>
+            <a href="#">Web Development</a>
+            <a href="#">Mobile App Development</a>
+            <a href="#">E-commerce Solutions</a>
+            <a href="#">UI/UX Design</a>
+            <a href="#">Digital Marketing</a>
+        </div>
+        <div class="footer-col">
+            <h4>Contact Info</h4>
+            <p><i class="fas fa-phone-alt" style="margin-right:8px;"></i> +91 8810320833</p>
+            <p><i class="fas fa-envelope" style="margin-right:8px;"></i> info@dyovity.com</p>
+            <p><i class="fas fa-map-marker-alt" style="margin-right:8px;"></i> Noida, UP, India</p>
+        </div>
+    </div>
+    <div class="copyright">
+        &copy; 2025 Dyovity. All rights reserved. | Crafted with <i class="fas fa-heart" style="color:#f43f5e;"></i> for digital excellence
+    </div>
+</footer>
+
+<!-- CANVAS NETWORK ANIMATION & RESPONSIVE GRID -->
+<script>
+(function(){
+    var grid = document.getElementById('pfGrid');
+    if(grid) {
+        function updateGrid() {
+            if(window.innerWidth < 640) grid.style.gridTemplateColumns = '1fr';
+            else if(window.innerWidth < 1024) grid.style.gridTemplateColumns = 'repeat(2, 1fr)';
+            else grid.style.gridTemplateColumns = 'repeat(3, 1fr)';
+        }
+        updateGrid();
+        window.addEventListener('resize', updateGrid);
+    }
+
+    var canvas = document.getElementById('networkCanvas');
+    if(canvas) {
+        var ctx = canvas.getContext('2d');
+        var nodes = [], particles = [];
+        var mouseX = -999, mouseY = -999;
+        var colors = ['rgba(59,130,246,.85)','rgba(139,92,246,.85)','rgba(56,189,248,.85)','rgba(236,72,153,.75)','rgba(52,211,153,.75)'];
+        function initCanvas() {
+            if(!canvas.parentElement) return;
+            canvas.width = canvas.parentElement.clientWidth;
+            canvas.height = canvas.parentElement.clientHeight;
+            nodes = []; particles = [];
+            var maxNodes = Math.min(45, Math.floor(canvas.width * canvas.height / 14000));
+            for(var i=0;i<maxNodes;i++) {
+                nodes.push({
+                    x: Math.random() * canvas.width, y: Math.random() * canvas.height,
+                    r: Math.random() * 2.5 + 1, c: colors[Math.floor(Math.random() * colors.length)],
+                    vx: (Math.random() - 0.5) * 0.6, vy: (Math.random() - 0.5) * 0.6,
+                    p: Math.random() * Math.PI * 2
+                });
+            }
+            var maxParts = Math.floor(canvas.width * canvas.height / 9000);
+            for(var j=0;j<maxParts;j++) {
+                particles.push({
+                    x: Math.random() * canvas.width, y: Math.random() * canvas.height,
+                    r: Math.random() * 1.5 + 0.4, vx: (Math.random() - 0.5) * 0.25, vy: (Math.random() - 0.5) * 0.25,
+                    life: Math.random(), decay: Math.random() * 0.015 + 0.004
+                });
+            }
+        }
+        function draw() {
+            if(!ctx) return;
+            ctx.fillStyle = '#0f172a';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            for(var i=0;i<nodes.length;i++) {
+                for(var j=i+1;j<nodes.length;j++) {
+                    var a=nodes[i], b=nodes[j], d=Math.hypot(a.x-b.x, a.y-b.y);
+                    if(d<155) {
+                        ctx.beginPath();
+                        ctx.moveTo(a.x, a.y);
+                        ctx.lineTo(b.x, b.y);
+                        ctx.strokeStyle = 'rgba(59,130,246,'+(0.22*(1-d/155))+')';
+                        ctx.lineWidth = 0.6;
+                        ctx.stroke();
+                    }
+                }
+            }
+            nodes.forEach(function(n) {
+                var d = Math.hypot(mouseX - n.x, mouseY - n.y);
+                if(d<130) {
+                    ctx.beginPath();
+                    ctx.moveTo(n.x, n.y);
+                    ctx.lineTo(mouseX, mouseY);
+                    ctx.strokeStyle = 'rgba(255,255,255,'+(0.12*(1-d/130))+')';
+                    ctx.lineWidth = 0.4;
+                    ctx.stroke();
+                }
+                ctx.beginPath();
+                ctx.arc(n.x, n.y, n.r + Math.sin(n.p)*0.6, 0, Math.PI*2);
+                ctx.fillStyle = n.c;
+                ctx.fill();
+                n.x += n.vx;
+                n.y += n.vy;
+                n.p += 0.025;
+                if(n.x<0 || n.x>canvas.width) n.vx *= -1;
+                if(n.y<0 || n.y>canvas.height) n.vy *= -1;
+            });
+            for(var k=0;k<particles.length;k++) {
+                var p = particles[k];
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+                ctx.fillStyle = 'rgba(99,179,237,'+(p.life*0.5)+')';
+                ctx.fill();
+                p.x += p.vx;
+                p.y += p.vy;
+                p.life -= p.decay;
+                if(p.x < -5) p.x = canvas.width + 5;
+                if(p.x > canvas.width+5) p.x = -5;
+                if(p.y < -5) p.y = canvas.height + 5;
+                if(p.y > canvas.height+5) p.y = -5;
+                if(p.life <= 0) {
+                    particles[k] = {
+                        x: Math.random() * canvas.width, y: Math.random() * canvas.height,
+                        r: Math.random() * 1.5 + 0.4, vx: (Math.random() - 0.5)*0.25, vy: (Math.random() - 0.5)*0.25,
+                        life: 1, decay: Math.random() * 0.015 + 0.004
+                    };
+                }
+            }
+            requestAnimationFrame(draw);
+        }
+        canvas.addEventListener('mousemove', function(e) {
+            var rect = canvas.getBoundingClientRect();
+            mouseX = e.clientX - rect.left;
+            mouseY = e.clientY - rect.top;
+        });
+        canvas.addEventListener('mouseleave', function() { mouseX = -999; mouseY = -999; });
+        window.addEventListener('resize', function() { initCanvas(); });
+        initCanvas();
+        draw();
+    }
+})();
+</script>
+</body>
+</html>
